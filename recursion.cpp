@@ -30,6 +30,15 @@ int power_n(int x,int n){
         return x;
     return x*power_n(x,n-1);
 }
+int power_dpn(int x,int n){
+    if(n==1)
+        return x;
+    int temp = power_dpn(x,n/2); 
+    if(n%2==0)
+        return temp*temp;
+    else
+        return temp*temp*x;
+}
 int fibbonaci_dp(vector<int>&p,int n){
     if(n==1)
         return 1;
@@ -57,15 +66,32 @@ int main(){
     cout <<"Function without dp : "<<duratio.count() << endl;
     
     vector<int>p(n+2,-1);
-    auto start = high_resolution_clock::now();
+    auto stt = high_resolution_clock::now();
     
     cout<<"with dp: "<<fibbonaci_dp(p,n)<<endl;
     
+    auto stp = high_resolution_clock::now();
+    auto dur = duration_cast<microseconds>(stp - stt);
+    cout <<endl<<"Function with dp : "<<dur.count() << endl;
+    
+    
+    
+    auto sta = high_resolution_clock::now();
+
+    cout<<"Power of 2 using recurr : "<<power_n(2,n)<<endl;
+
+    auto st = high_resolution_clock::now();
+    auto durati = duration_cast<microseconds>(st - sta);
+    cout <<endl<<"Function without dp : "<<durati.count() << endl;
+
+
+
+    auto start = high_resolution_clock::now();
+    cout<<"Power of 2 using dp : "<<power_dpn(2,n);
+
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
-    cout <<"Function with dp : "<<duration.count() << endl;
-    
-    cout<<"Power of 2 using recurr : "<<power_n(2,n);
+    cout <<endl<<"Function with dp : "<<duration.count() << endl;
     return 0;
 }
 
