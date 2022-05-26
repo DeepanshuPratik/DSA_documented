@@ -51,10 +51,18 @@ int fibbonaci_dp(vector<int>&p,int n){
     
     return p[n];
 }
+bool isPalindrome(string s){
+    if(s.length()==0 || s.length()==1)
+        return true;
+    if(s[0]==s[s.length()-1])
+        return isPalindrome(s.substr(1,s.length()-2));
+    return false;
+}
 
 int main(){
     long long n;
     cin>>n;
+
     cout<<"Factorial of n: "<<factorial(n)<<endl;
     
     auto star = high_resolution_clock::now();
@@ -92,6 +100,10 @@ int main(){
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     cout <<endl<<"Function with dp : "<<duration.count() << endl;
+
+    string m;
+    cin>>m;
+    cout<<"Is palindrome : "<<isPalindrome(m)<<endl;
     return 0;
 }
 
