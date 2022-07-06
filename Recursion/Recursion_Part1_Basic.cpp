@@ -1,4 +1,8 @@
 //Problem 1 : Print names 5 times using recursion
+//Problem 2 : Print 1 to N using recursion
+//Problem 3 : Print N to 1 using recursion
+//Problem 4 : Print 1 to N using backtracking
+//Problem 5 : Print N to 1 using backtracking
 
 #include<bits/stdc++.h>
 using namespace std;
